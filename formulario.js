@@ -3,5 +3,41 @@
         nombre = formulario.nombre,
         correo = formulario.correo,
         sexo = formulario.sexo,
-        terminos = formulario.terminos
+        terminos = formulario.terminos,
+        error = document.getElementById('error')
+
+    function validarNombre(e) {
+        if(nombre.value == '' || nombre.value == null) {
+            console.log('Por favor completa el nombre');
+            error.style.display = 'block'
+            error.innerHTML += '<li>Por favor completa el nombre</li>'
+            e.preventDefault();
+        }
+    }
+
+    function validarCorreo(e) {
+        if(correo.value == '' || correo.value == null) {
+            console.log('Por favor completa el correo');
+            error.style.display = 'block'
+            error.innerHTML += '<li>Por favor completa el correo</li>'
+            e.preventDefault();
+        }
+    }
+
+    function validarSexo() {
+
+    }
+
+    function validarTerminos(){
+
+    }
+
+    function validarFormulario(e){
+        validarNombre(e);
+        validarCorreo(e);
+        // validarSexo();
+        // validarTerminos();
+    }
+
+    formulario.addEventListener('submit', validarFormulario);
 //}())
