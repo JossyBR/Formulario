@@ -1,4 +1,4 @@
-//(function(){
+(function(){
     var formulario = document.getElementById('formulario'),
         nombre = formulario.nombre,
         correo = formulario.correo,
@@ -11,7 +11,10 @@
             console.log('Por favor completa el nombre');
             error.style.display = 'block'
             error.innerHTML += '<li>Por favor completa el nombre</li>'
+
             e.preventDefault();
+        } else {
+            error.style.display = 'none';
         }
     }
 
@@ -20,24 +23,44 @@
             console.log('Por favor completa el correo');
             error.style.display = 'block'
             error.innerHTML += '<li>Por favor completa el correo</li>'
+
             e.preventDefault();
+        } else {
+            error.style.display = 'none';
         }
     }
 
-    function validarSexo() {
+    function validarSexo(e) {
+        if(sexo.value == '' || sexo.value == null) {
+            console.log('Por favor completa el sexo');
+            error.style.display = 'block'
+            error.innerHTML += '<li>Por favor completa el sexo</li>'
 
+            e.preventDefault();
+        } else {
+            error.style.display = 'none';
+        }
     }
 
-    function validarTerminos(){
+    function validarTerminos(e){
+        if(terminos.checked == false) {
+            console.log('Por favor acepta los terminos');
+            error.style.display = 'block'
+            error.innerHTML += '<li>Por favor acepta los terminos</li>'
 
+            e.preventDefault();
+        } else {
+            error.style.display = 'none';
+        }
     }
 
     function validarFormulario(e){
+        error.innerHTML = '';
         validarNombre(e);
         validarCorreo(e);
-        // validarSexo();
-        // validarTerminos();
+        validarSexo(e);
+        validarTerminos(e);
     }
 
     formulario.addEventListener('submit', validarFormulario);
-//}())
+}())
